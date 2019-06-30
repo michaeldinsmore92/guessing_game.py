@@ -19,39 +19,27 @@ def start_game():
     # Continuously prompt the player for a guess.
     attempts = 1
     try:
-        guess = input("I am thinking of a number between 1 and 10, including both. Take a guess! ")
+        guess = int(input("I am thinking of a number between 1 and 10, including both. Take a guess! "))
     except ValueError as err:
         print("Uh oh! That's not a valid value. Please try again...".format(err))
     while guess != ANSWER:
-        try:
-            guess = int(guess)
-        except ValueError as err:
-            print("Uh oh! That's not a valid value. Please try again...".format(err))
-            guess = input("I am thinking of a number between 1 and 10, including both. Take a guess! ")
-        else:
-            #   If the guess is outside the guessing range, try again.
-            if guess > 10 or guess < 1:
-                print("That number is out of range! Choose a number between 1 and 10...")
-                guess = input("I am thinking of a number between 1 and 10, including both. Take a guess! ")
-                guess = int(guess)
-                attempts += 1
-        #   If the guess greater than the solution, display to the player "It's lower".
-            elif guess > ANSWER:
-                print("It's lower...")
-                guess = input("I am thinking of a number between 1 and 10, including both. Take a guess! ")
-                guess = int(guess)
-                attempts += 1
-        #   If the guess is less than the solution, display to the player "It's higher".
-            elif guess < ANSWER:
-                print("It's higher...")
-                guess = input("I am thinking of a number between 1 and 10, including both. Take a guess! ")
-                guess = int(guess)
-                attempts += 1
+        if guess > 10 or guess < 1:
+            print("That number is out of range! Choose a number between 1 and 10...")
+            guess = int(input("I am thinking of a number between 1 and 10, including both. Take a guess! "))
+            attempts += 1
+    #   If the guess greater than the solution, display to the player "It's lower".
+        elif guess > ANSWER:
+            print("It's lower...")
+            guess = int(input("I am thinking of a number between 1 and 10, including both. Take a guess! "))
+            attempts += 1
+    #   If the guess is less than the solution, display to the player "It's higher".
+        elif guess < ANSWER:
+            print("It's higher...")
+            guess = int(input("I am thinking of a number between 1 and 10, including both. Take a guess! "))
+            attempts += 1
     #   Once the guess is correct, stop looping, inform the user they "Got it"
     if guess == ANSWER:
         print("You got it, {}!".format(name))
-        play_again()
-    else:
         play_again()
 
 if __name__ == '__main__':
