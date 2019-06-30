@@ -40,6 +40,7 @@ def start_game():
     #   Once the guess is correct, stop looping, inform the user they "Got it"
     if guess == ANSWER:
         print("You got it, {}!".format(name))
+        print("It took you {} attempts.".format(attempts))
         play_again()
 
 if __name__ == '__main__':
