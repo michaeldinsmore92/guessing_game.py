@@ -11,7 +11,7 @@ def play_again():
     if play_again.lower() == "y":
         start_game()
     else:
-        print("Thank you for playing. Goodbye!")
+        print("Thank you for playing, {}. Goodbye!".format(name))
 
 def start_game():
     # Store a random number as the answer/solution.
@@ -30,12 +30,7 @@ def start_game():
             guess = input("I am thinking of a number between 1 and 10, including both. Take a guess! ")
         else:
             #   If the guess is outside the guessing range, try again.
-            if guess > 10:
-                print("That number is out of range! Choose a number between 1 and 10...")
-                guess = input("I am thinking of a number between 1 and 10, including both. Take a guess! ")
-                guess = int(guess)
-                attempts += 1
-            elif guess < 1:
+            if guess > 10 or guess < 1:
                 print("That number is out of range! Choose a number between 1 and 10...")
                 guess = input("I am thinking of a number between 1 and 10, including both. Take a guess! ")
                 guess = int(guess)
