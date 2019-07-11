@@ -10,6 +10,8 @@ Project 1 - Number Guessing Game
 import random
 import sys
 
+high_score = random.randint(1, 10)
+
 def play_again():
     play_again = input("Would you like to play again? Y/N ")
     if play_again.lower() != "n":
@@ -56,12 +58,17 @@ def start_game():
     if guess == ANSWER:
         print("You got it, {}!".format(name))
         print("It took you {} attempts.".format(attempts))
-        play_again()
+        if attempts < high_score:
+            print("Congratulations! You beat the high score!".format(attempts))
+            play_again()
+        else:
+            play_again()
 
 if __name__ == '__main__':
     # Display an intro/welcome message to the player.
     name = input("Hello! What is your name? ")
+    name = name.title()
     print("Hi, {}! Welcome to the Number Guessing Game!".format(name))
-    print("There isn't a high score to beat... yet!")
+    print("The current high score to beat is {} guesses. Good luck!".format(high_score))
     # Kick off the program by calling the start_game function.
     start_game()
