@@ -25,10 +25,10 @@ def start_game(highscore):
             guess = int(guess)
         except ValueError as err:
             print("Uh oh! That's not a valid value. Please try again...".format(err))
-            start_game()
+            start_game(highscore)
         except TypeError as err:
             print("Uh oh! That's not a valid value. Please try again...".format(err))
-            start_game()  
+            start_game(highscore)  
         while guess != ANSWER:
             try:
                 if guess > 10 or guess < 1:
